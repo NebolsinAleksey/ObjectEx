@@ -50,5 +50,44 @@ public class Person
 
         return false;
     }
+    public override int GetHashCode()
+    {
+        unchecked 
+        {
+            int hash = 17;
+            hash = hash * 23 + (Name?.GetHashCode() ?? 0);
+            hash = hash * 23 + Age.GetHashCode();
+            return hash;
+        }
+    }
 
+    
+    public static bool operator <(Person a, Person b)
+    {
+        if (a is null || b is null)
+            return false;
+
+        int nameComparison = string.Compare(a.Name, b.Name, StringComparison.Ordinal);
+        if (nameComparison < 0)
+            return true;
+        if (nameComparison > 0)
+            return false;
+
+        return a.Age < b.Age;
+    }
+
+    
+    public static bool operator >(Person a, Person b)
+    {
+        if (a is null || b is null)
+            return false;
+
+        int nameComparison = string.Compare(a.Name, b.Name, StringComparison.Ordinal);
+        if (nameComparison > 0)
+            return true;
+        if (nameComparison < 0)
+            return false;
+
+        return a.Age > b.Age;
+    }
 }
