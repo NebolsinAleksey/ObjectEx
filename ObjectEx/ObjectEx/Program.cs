@@ -10,7 +10,6 @@ internal class Program
         var p2 = new Person { Name = "Alex", Age = 33 };
         var p3 = new Person { Name = "Yury", Age = 41 };
 
-
         Console.WriteLine(p1);
 
         Console.WriteLine(p1.Equals(p2));
@@ -18,7 +17,5 @@ internal class Program
         Console.WriteLine(p3.Equals(p1));
 
         Console.WriteLine(p3 == p1);
-
-
     }
 }
